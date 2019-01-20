@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/close_white_16x16.png</file>
+        <file>Icons/qq_white_20x20.png</file>
+        <file>Icons/information_4ea9e9_35x35.png</file>
+    </qresource>
+</RCC>
