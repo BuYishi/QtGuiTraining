@@ -16,6 +16,7 @@ void TitleBarWidget::paintEvent(QPaintEvent *event)
 
 void TitleBarWidget::mousePressEvent(QMouseEvent *event)
 {
+    isMousePressed = true;
     QWidget *parentWidget = static_cast<QWidget *>(parent());
     differenceX = event->globalX() - parentWidget->x();
     differenceY = event->globalY() - parentWidget->y();
@@ -23,8 +24,17 @@ void TitleBarWidget::mousePressEvent(QMouseEvent *event)
 
 void TitleBarWidget::mouseMoveEvent(QMouseEvent *event)
 {
-    int x = event->globalX() - differenceX;
-    int y = event->globalY() - differenceY;
-    QWidget *parentWidget = static_cast<QWidget *>(parent());
-    parentWidget->move(x, y);
+    if (isMousePressed)
+    {
+        int x = event->globalX() - differenceX;
+        int y = event->globalY() - differenceY;
+        QWidget *parentWidget = static_cast<QWidget *>(parent());
+        parentWidget->move(x, y);
+    }
+}
+
+void TitleBarWidget::mouseReleaseEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event)
+    isMousePressed = false;
 }
